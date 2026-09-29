@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Governance: Predictive Land Acquisition Support Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <nav>
+        <div>
+            <span style="font-weight: 800; color:#16a34a;">🛰️ PROACTIVE LAND GOVERNANCE PLATFORM</span>
+        </div>
+        <div>
+            {% if session.get('user') %}
+                <span style="margin-right:15px; color:#475569;">👤 {{ session.get('user') }} ({{ session.get('role') }})</span>
+                <a href="{{ url_for('dashboard') }}">Executive Dashboard</a>
+                <a href="{{ url_for('view_projects') }}">All Analyzed Projects</a>
+                <a href="{{ url_for('analyze') }}">Predictive Analytics Lab</a>
+                <a href="{{ url_for('logout') }}" style="color: #dc2626;">Secure Logout</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Identity Login</a>
+                <a href="{{ url_for('register') }}">Portal Registration</a>
+            {% endif %}
+        </div>
+    </nav>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

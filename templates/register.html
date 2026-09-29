@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card" style="max-width: 450px; margin: 0 auto;">
+    <h2>System Access Creation</h2>
+    <form method="POST">
+        <div class="form-group">
+            <label>System Username</label>
+            <input type="text" name="username" required autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label>Security Password</label>
+            <input type="password" name="password" required>
+        </div>
+        <div class="form-group">
+            <label>Administrative User Role</label>
+            <select name="role">
+                <option value="Project Manager">Project Manager</option>
+                <option value="Ministry Administrator">Ministry Administrator</option>
+                <option value="Policy Inspector">Policy Inspector</option>
+            </select>
+        </div>
+        <button type="submit">Finalize Credentials Sealing</button>
+    </form>
+</div>
+{% endblock %}

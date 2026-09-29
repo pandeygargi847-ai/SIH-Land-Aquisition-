@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card" style="max-width: 850px; margin: 0 auto;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h2>✏️ Edit Analyzed Project Record</h2>
+        <a href="{{ url_for('view_projects') }}" style="color: var(--text-muted); text-decoration: none; font-weight: 600;">← Back to Projects</a>
+    </div>
+    
+    <p style="color: var(--text-muted); margin-bottom:25px;">Modify project parameters below. Submitting will recalculate the multi-stage machine learning risk evaluation.</p>
+
+    <form method="POST">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+                <label>Project Name</label>
+                <input type="text" name="project_name" value="{{ project['project_name'] }}" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>Infrastructure Sector</label>
+                <select name="project_type">
+                    <option value="National Highway" {% if project['project_type'] == 'National Highway' %}selected{% endif %}>National Highway Link</option>
+                    <option value="Railways Corridor" {% if project['project_type'] == 'Railways Corridor' %}selected{% endif %}>Railways Corridor Expansion</option>
+                    <option value="Industrial Smart City" {% if project['project_type'] == 'Industrial Smart City' %}selected{% endif %}>Industrial Smart City Hub</option>
+                    <option value="Renewable Energy Zone" {% if project['project_type'] == 'Renewable Energy Zone' %}selected{% endif %}>Renewable Energy Substation Zone</option>
+                </select>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+                <label>District</label>
+                <input type="text" name="district" value="{{ project['district'] }}" required>
+            </div>
+            <div class="form-group">
+                <label>State</label>
+                <input type="text" name="state" value="{{ project['state'] }}" required>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+                <label>Total Land Area Needed (Hectares)</label>
+                <input type="number" step="0.1" name="land_area_hectares" value="{{ project['land_area_hectares'] }}" required>
+            </div>
+            <div class="form-group">
+                <label>Count of Affected Families (Social Impact Baseline)</label>
+                <input type="number" name="affected_families_count" value="{{ project['affected_families_count'] }}" required>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+                <label>Compensation Disbursed (Allocated %)</label>
+                <input type="number" step="0.1" name="compensation_disbursed_pct" value="{{ project['compensation_disbursed_pct'] }}" required>
+            </div>
+            <div class="form-group">
+                <label>Pending Statutory Approvals Log (Days)</label>
+                <input type="number" name="pending_approvals_days" value="{{ project['pending_approvals_days'] }}" required>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+                <label>Active Title Lawsuit Disputes (Court Count)</label>
+                <input type="number" name="legal_disputes_count" value="{{ project['legal_disputes_count'] }}" required>
+            </div>
+            <div class="form-group">
+                <label>Physical Possession Handover Status (%)</label>
+                <input type="number" step="0.1" name="possession_status_pct" value="{{ project['possession_status_pct'] }}" required>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+                <label>Rehabilitation / Resettlement Completion Rate (%)</label>
+                <input type="number" step="0.1" name="rehabilitation_progress_pct" value="{{ project['rehabilitation_progress_pct'] }}" required>
+            </div>
+            <div class="form-group">
+                <label>Stakeholder Responsiveness Index (Scale 1.0 - 10.0)</label>
+                <input type="number" step="0.1" name="stakeholder_responsiveness_score" value="{{ project['stakeholder_responsiveness_score'] }}" required>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+                <label>Historical Local Admin Performance Weights (Scale 1.0 - 10.0)</label>
+                <input type="number" step="0.1" name="historical_admin_performance" value="{{ project['historical_admin_performance'] }}" required>
+            </div>
+            <div class="form-group">
+                <label>Incomplete Documentation Metric Scale (%)</label>
+                <input type="number" step="0.1" name="documentation_incomplete_pct" value="{{ project['documentation_incomplete_pct'] }}" required>
+            </div>
+        </div>
+
+        <button type="submit">Update Record & Recalculate AI Risk Profile</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card" style="max-width: 850px; margin: 0 auto;">
+    <h2>🛰️ Multi-Parameter Risk Ingestion Laboratory</h2>
+    <p style="color: var(--text-muted); margin-bottom:25px;">Feed infrastructure project profiles into the multi-stage machine learning array model.</p>
+    
+    <form method="POST">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+                <label>Project Name</label>
+                <input type="text" name="project_name" placeholder="e.g. Dedicated Freight Link Corridor" required autocomplete="off">
+            </div>
+            <div class="form-group">
+                <label>Infrastructure Sector</label>
+                <select name="project_type">
+                    <option value="National Highway">National Highway Link</option>
+                    <option value="Railways Corridor">Railways Corridor Expansion</option>
+                    <option value="Industrial Smart City">Industrial Smart City Hub</option>
+                    <option value="Renewable Energy Zone">Renewable Energy Substation Zone</option>
+                </select>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+                <label>District</label>
+                <input type="text" name="district" placeholder="e.g. Lucknow" required>
+            </div>
+            <div class="form-group">
+                <label>State</label>
+                <input type="text" name="state" placeholder="e.g. Uttar Pradesh" required>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+                <label>Total Land Area Needed (Hectares)</label>
+                <input type="number" step="0.1" name="land_area_hectares" value="45.0" required>
+            </div>
+            <div class="form-group">
+                <label>Count of Affected Families (Social Impact Baseline)</label>
+                <input type="number" name="affected_families_count" value="120" required>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+                <label>Compensation Disbursed (Allocated %)</label>
+                <input type="number" step="0.1" name="compensation_disbursed_pct" value="15.0" required>
+            </div>
+            <div class="form-group">
+                <label>Pending Statutory Approvals Log (Days)</label>
+                <input type="number" name="pending_approvals_days" value="240" required>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+                <label>Active Title Lawsuit Disputes (Court Count)</label>
+                <input type="number" name="legal_disputes_count" value="6" required>
+            </div>
+            <div class="form-group">
+                <label>Physical Possession Handover Status (%)</label>
+                <input type="number" step="0.1" name="possession_status_pct" value="10.0" required>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+                <label>Rehabilitation / Resettlement Completion Rate (%)</label>
+                <input type="number" step="0.1" name="rehabilitation_progress_pct" value="5.0" required>
+            </div>
+            <div class="form-group">
+                <label>Stakeholder Responsiveness Index (Scale 1.0 - 10.0)</label>
+                <input type="number" step="0.1" name="stakeholder_responsiveness_score" value="2.5" required>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="form-group">
+                <label>Historical Local Admin Performance Weights (Scale 1.0 - 10.0)</label>
+                <input type="number" step="0.1" name="historical_admin_performance" value="4.0" required>
+            </div>
+            <div class="form-group">
+                <label>Incomplete Documentation Metric Scale (%)</label>
+                <input type="number" step="0.1" name="documentation_incomplete_pct" value="75.0" required>
+            </div>
+        </div>
+
+        <button type="submit">Execute Decision System Analytics</button>
+    </form>
+</div>
+{% endblock %}
